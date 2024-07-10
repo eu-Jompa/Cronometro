@@ -1,6 +1,6 @@
 const playBtn = document.querySelector('#play');
-const reset = document.getElementsByClassName('reset');
-
+const reset = document.querySelector('#reset');;
+const pauseBtn = document.querySelector('#pause');
 
 const windowsHora = document.querySelector(".horas");
 const windowsMinuto = document.querySelector(".minutos");
@@ -12,17 +12,16 @@ let minutos = 0;
 let segundos = 0;
 let milisegundos = 0;
 let interval = 0;
-let pause = true
+var pause = false;
 // funcões
 
 playBtn.addEventListener('click', initTimer);
-
+pauseBtn.addEventListener('click', pauseTimer);
+reset.addEventListener('click', resetTimer);
 
 function initTimer(){
-    let togglePlayPause = playBtn.getAttribute('action')
-    
-    
-    if(togglePlayPause == "start"|| togglePlayPause == "continue"){
+    pause= false
+    if(pause == false){
         interval = setInterval(()=>{
         milisegundos += 10;
             if(milisegundos === 1000){
@@ -37,15 +36,42 @@ function initTimer(){
                 horas++;
                 minutos =0;
             }
-            windowsHora.textContent= horas;
-            windowsMinuto.textContent= minutos;
-            windowsSegundo.textContent= segundos;
-            windowsMiliSegundo.textContent = milisegundos;
+            windowsHora.textContent= formatTime(horas);
+            windowsMinuto.textContent= formatTime(minutos);
+            windowsSegundo.textContent= formatTime(segundos);
+            windowsMiliSegundo.textContent = formatmilisegundos(milisegundos);
             
         },10)
-        togglePlayPause = playBtn.setAttribute("action", "pause");
+        pauseBtn.style.display= 'inline';
+        playBtn.style.display= 'none';   
     }
     
 }
+function formatTime(time){
+    return time <10 ? `0${time}`: time;
+}
+function formatmilisegundos(time){
+    return time <100 ? time.padStart(3,"0") : time;
+}
+    function pauseTimer(){
+        pause = true;
+        clearInterval(interval)
+        
+        pauseBtn.style.display= 'none';
+        playBtn.style.display= 'inline';
+    }
+    function resetTimer(){
+        pauseTimer();
+        horas= 0;
+        minutos= 0;
+        segundos= 0;
+        milisegundos= 0;
+        windowsHora.textContent= formatTime(horas);
+            windowsMinuto.textContent= formatTime(minutos);
+            windowsSegundo.textContent= formatTime(segundos);
+            windowsMiliSegundo.textContent = formatmilisegundos(milisegundos);
+        
+    }
+
 
 

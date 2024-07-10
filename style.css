@@ -52,3 +52,9 @@ body{
     border-radius: 10px;
     border: #fff solid 1px;
 }
+.actions .pause{
+    display: none;
+}
+.actions .play{
+    
+}
