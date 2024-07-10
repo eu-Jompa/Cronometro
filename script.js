@@ -20,10 +20,11 @@ playBtn.addEventListener('click', initTimer);
 
 function initTimer(){
     let togglePlayPause = playBtn.getAttribute('action')
-    interval = setInterval(()=>{
+    
+    
+    if(togglePlayPause == "start"|| togglePlayPause == "continue"){
+        interval = setInterval(()=>{
         milisegundos += 10;
-
-        if(togglePlayPause == "start"|| togglePlayPause == "continue"){
             if(milisegundos === 1000){
                 segundos++;
                 milisegundos=0;
@@ -41,14 +42,9 @@ function initTimer(){
             windowsSegundo.textContent= segundos;
             windowsMiliSegundo.textContent = milisegundos;
             
-            playBtn.addEventListener('click', pausetimer);
-            function pausetimer(){
-                togglePlayPause = playBtn.setAttribute("action", "pause")
-                
-            }
-            
-        }
         },10)
+        togglePlayPause = playBtn.setAttribute("action", "pause");
+    }
     
 }
 
