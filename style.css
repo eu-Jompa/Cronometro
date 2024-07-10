@@ -27,7 +27,7 @@ body{
     border: #fff solid 1px;
     border-radius: 10px;
 }
-.horas, .minutos, .segundos, .separador{
+.horas, .minutos, .segundos, .separador, .milisegundos{
     font-size: 30px;
     font-family: "Roboto", sans-serif;
     font-weight: 700;
