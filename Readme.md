@@ -4,4 +4,4 @@
 ## Visualização 🖥️
 Para acessar e visualizar como ficou basta clicar no link abaixo 👇 ou rolar um pouco a página e olhar as imagens. 
 
-[Clique aqui](https://eu-jompa.github.io/Cronometro/)
+[Clique aqui](https://eu-jompa.github.io/Cronometro/){target="_blank"}
